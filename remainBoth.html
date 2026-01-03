@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHT | شركة الشبلي تل</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--orange:#ff7a00;
+--black:#070707;
+}
+
+*{
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+margin:0;
+min-height:100vh;
+background:
+radial-gradient(circle at top,#ff7a0044,transparent 45%),
+linear-gradient(to bottom,#000,#111);
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== CINEMATIC SPLASH ===== */
+#splash{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center,#ff7a00 0%,#000 65%);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:splashOut 1.2s ease forwards;
+animation-delay:3.8s;
+}
+
+@keyframes splashOut{
+to{
+opacity:0;
+visibility:hidden;
+filter:blur(20px);
+}
+}
+
+.splash-logo{
+width:140px;
+height:140px;
+border-radius:38px;
+background:#ff7a00;
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:46px;
+font-weight:900;
+letter-spacing:3px;
+box-shadow:
+0 0 40px #ff7a00,
+0 0 120px #ff7a00;
+animation:logoCine 2.6s cubic-bezier(.19,1,.22,1);
+}
+
+@keyframes logoCine{
+0%{
+transform:scale(0.2) rotate(-20deg);
+opacity:0;
+filter:blur(18px);
+}
+60%{
+transform:scale(1.15) rotate(3deg);
+opacity:1;
+filter:blur(0);
+}
+100%{
+transform:scale(1) rotate(0);
+}
+}
+
+.splash-title{
+margin-top:18px;
+font-size:22px;
+font-weight:800;
+letter-spacing:1px;
+opacity:0;
+animation:textFade 1.2s ease forwards;
+animation-delay:1.8s;
+}
+
+.splash-sub{
+margin-top:6px;
+font-size:14px;
+opacity:0;
+color:#ffd6b0;
+animation:textFade 1.2s ease forwards;
+animation-delay:2.2s;
+}
+
+@keyframes textFade{
+to{opacity:1}
+}
+
+/* ===== HEADER ===== */
+.header{
+padding:18px;
+display:flex;
+align-items:center;
+gap:14px;
+background:linear-gradient(to right,#ff7a00,#ff9a00);
+color:black;
+}
+
+.logo{
+width:52px;
+height:52px;
+border-radius:18px;
+background:#ff7a00;
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+font-size:20px;
+letter-spacing:1px;
+}
+
+/* ===== CARD ===== */
+.card{
+max-width:420px;
+margin:26px auto;
+background:#0f0f0f;
+border-radius:28px;
+padding:22px;
+box-shadow:0 30px 90px rgba(0,0,0,.85);
+border:1px solid #ff7a0033;
+}
+
+/* INPUT */
+label{
+display:block;
+margin-top:14px;
+font-size:14px;
+color:#ffb37a;
+}
+
+input{
+width:100%;
+padding:18px;
+border-radius:18px;
+border:none;
+font-size:18px;
+margin-top:8px;
+background:#000;
+color:#ffd9b3;
+outline:none;
+box-shadow:inset 0 0 0 1px #ff7a0033;
+}
+
+/* PREVIEW */
+.preview{
+margin-top:14px;
+background:linear-gradient(to right,#ff7a0022,#000);
+border-left:4px solid #ff7a00;
+border-radius:16px;
+padding:14px;
+font-size:15px;
+color:#ffe2c7;
+white-space:pre-line;
+}
+
+/* NOTES */
+.notes{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:18px;
+}
+
+.note{
+flex:1 1 calc(33% - 8px);
+padding:14px;
+border-radius:16px;
+background:#000;
+color:#ff7a00;
+border:1px solid #ff7a0044;
+font-weight:800;
+cursor:pointer;
+transition:.3s;
+}
+
+.note.active{
+background:#ff7a00;
+color:black;
+box-shadow:0 0 25px #ff7a00;
+}
+
+/* RESULT */
+.result{
+margin-top:20px;
+background:#000;
+border-radius:22px;
+padding:18px;
+border:1px solid #ff7a0044;
+display:none;
+}
+
+.result div{
+margin:6px 0;
+font-size:15px;
+}
+
+/* FOOTER ACCORDION */
+.footer{
+max-width:420px;
+margin:30px auto;
+}
+
+.acc{
+background:#0b0b0b;
+border-radius:18px;
+margin-bottom:10px;
+overflow:hidden;
+border:1px solid #ff7a0022;
+}
+
+.acc button{
+width:100%;
+background:none;
+color:#ff7a00;
+padding:16px;
+border:none;
+font-size:15px;
+font-weight:800;
+text-align:right;
+cursor:pointer;
+}
+
+.acc div{
+display:none;
+padding:14px 16px;
+font-size:13px;
+line-height:2;
+color:#ddd;
+background:#050505;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+<div class="splash-logo">SHT</div>
+<div class="splash-title">شركة الشبلي تل</div>
+<div class="splash-sub">قوة الحساب • دقة القرار</div>
+</div>
+
+<div class="header">
+<div class="logo">SHT</div>
+<strong>شركة الشبلي تل</strong>
+</div>
+
+<div class="card">
+<label>💰 المبلغ بالليرة السورية القديمة</label>
+<input id="amount" inputmode="numeric" placeholder="مثال: 560000">
+<div class="preview" id="preview">—</div>
+
+<div class="notes">
+<div class="note" data-v="10">10</div>
+<div class="note" data-v="25">25</div>
+<div class="note" data-v="50">50</div>
+<div class="note" data-v="100">100</div>
+<div class="note" data-v="200">200</div>
+<div class="note" data-v="500">500</div>
+</div>
+
+<div class="result" id="result">
+<div id="r1"></div>
+<div id="r2"></div>
+<div id="r3"></div>
+</div>
+</div>
+
+<div class="footer">
+<div class="acc"><button>حول الموقع</button><div>منصة احترافية لتحليل فئات العملة السورية بدقة وسرعة.</div></div>
+<div class="acc"><button>من نحن</button><div>شركة الجاجة والشبلي – خبرة إقليمية في الحلول التقنية.</div></div>
+<div class="acc"><button>التواصل معنا</button><div>📞 +963 992 320 306</div></div>
+</div>
+
+<script>
+const USD_RATE=120;
+const amount=document.getElementById("amount");
+const preview=document.getElementById("preview");
+const notes=document.querySelectorAll(".note");
+const result=document.getElementById("result");
+let note=null;
+
+amount.oninput=()=>{
+let v=amount.value.replace(/\D/g,"");
+amount.value=v?Number(v).toLocaleString():"";
+if(v){
+let n=v/100;
+let usd=(n/USD_RATE).toFixed(2);
+preview.innerText=`💴 ${n.toLocaleString()} ليرة جديدة\n💵 ≈ ${usd} دولار`;
+}
+if(note)calc();
+};
+
+notes.forEach(n=>{
+n.onclick=()=>{
+notes.forEach(x=>x.classList.remove("active"));
+n.classList.add("active");
+note=Number(n.dataset.v);
+calc();
+};
+});
+
+function calc(){
+let v=Number(amount.value.replace(/,/g,""))/100;
+if(!v||!note)return;
+let c=Math.floor(v/note);
+let r=v-(c*note);
+result.style.display="block";
+r1.innerText=`فئة الورقة: ${note}`;
+r2.innerText=`عدد الأوراق: ${c}`;
+r3.innerText=`المتبقي: ${r.toLocaleString()} ليرة جديدة`;
+}
+
+document.querySelectorAll(".acc button").forEach(b=>{
+b.onclick=()=>b.nextElementSibling.style.display=
+b.nextElementSibling.style.display==="block"?"none":"block";
+});
+</script>
+
+</body>
+</html>
